@@ -1,6 +1,8 @@
 var auth = require('./auth'),
   users = require('../controllers/users'),
-  courses = require('../controllers/courses'),
+  courses = require('../controllers/surveys'),
+  //surveyCtrl = require('../controllers/surveys'),
+  //userSurveyCtrl = require('../controllers/user-survey-ctrl'),
   mongoose = require('mongoose'),
   User = mongoose.model('User');
 
@@ -10,9 +12,15 @@ module.exports = function(app) {
   app.post('/api/users', users.createUser);
   app.put('/api/users', users.updateUser);
 
-  app.get('/api/courses', courses.getCourses);
-  app.get('/api/courses/:id', courses.getCourseById);
+  app.get('/api/surveys', courses.getSurveys);
+  app.get('/api/surveys/:id', courses.getSurveyById);
+  app.post('/api/surveys/', courses.createSurvey);
+  //app.get('/api/survey', surveyCtrl.getSurveys);
+  //app.get('/api/survey/:id', surveyCtrl.getSurveyById);
 
+  // app.get('/api/user-surveys', userSurveyCtrl.getUserSurveys);
+  // app.get('/api/user-surveys/:id', userSurveyCtrl.getUserSurveysById);
+  
   app.get('/partials/*', function(req, res) {
     res.render('../../public/app/' + req.params[0]);
   });
