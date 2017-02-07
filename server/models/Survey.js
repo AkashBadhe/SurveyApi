@@ -16,7 +16,6 @@ function createDefaultSurveys() {
     Survey.find({}).exec(function(err, collection) {
         if (collection.length === 0) {
             var question1 = new Question({
-                _id: 1,
                 question: 'How likely is it that you would recommend this company to a friend or colleague?',
                 response: {
                     selected: [],
