@@ -4,14 +4,12 @@ var _ = require('lodash');
 exports.getSurveys = function(req, res) {
     Survey.find({}).populate('questions').exec(function(err, collection) {
         console.log(collection);
-        res.status(200);
         res.send(collection);
     })
 };
 
 exports.getSurveyById = function(req, res) {
     Survey.findOne({ _id: req.params.id }).exec(function(err, course) {
-        res.status(200);
         res.send(course);
     })
 }
@@ -53,20 +51,44 @@ exports.createSurvey = function(req, res, next) {
     }
 }
 
+<<<<<<< HEAD
+exports.updateSurvey = function(req, res, next){
+	var id = req.params._id || req.body._id;
+	Survey.findByIdAndUpdate(id,{$set:req.body}, function(err, result){
+        if(err){
+            console.log(err);
+        }
+        console.log("RESULT: " + result);
+        res.status(200);
+        res.send(result);
+    });
+}
+
+exports.deleteSurvey = function(req, res, next) {
+    var id = req.params._id || req.body._id;
+    console.log('Deleting book: ' + id);
+    Survey.remove({ _id: id }, function(err) {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        res.status(200);
+    }
+});
+}
+=======
 exports.updateSurvey = function(req, res, next) {
   var itemId = req.body._id;
     delete req.body._id;
-    Survey.findOneAndUpdate({_id : itemId}, { $set: req.body }, {new: true},  function(err, doc) {
+    Survey.findOneAndUpdate({_id : itemId}, { $set: req.body }, function(err, doc) {
         if (err) { res.status(400);
             return res.send({ reason: err.toString() }); }
-        res.status(200);
         res.send(doc);
     });
 }
 
 exports.deleteById = function(req, res) {
     Survey.remove({ _id: req.body._id }, function(err, survey) {
-        res.status(200);
         res.send(survey);
     })
 }
@@ -77,3 +99,4 @@ exports.search = function(req, res) {
       res.send(result);
     })
 }
+>>>>>>> 80f21fa84fcead0ac67af50c6fb4388556536be6

@@ -10,8 +10,8 @@
     "node": "0.10.x",
     "npm": "1.3.x"
   },
-  "author": "Joe Eames",
-  "license": "BSD-2-Clause",
+  "author": "Akash Badhe",
+  "license": "Open Source",
   "dependencies": {
     "body-parser": "~1.2.0",
     "cookie-parser": "^1.1.0",
