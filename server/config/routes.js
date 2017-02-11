@@ -14,7 +14,10 @@ module.exports = function(app) {
 
   app.get('/api/surveys', courses.getSurveys);
   app.get('/api/surveys/:id', courses.getSurveyById);
-  app.post('/api/surveys/', courses.createSurvey);
+  app.post('/api/surveys', courses.createSurvey);
+  app.put('/api/surveys', courses.updateSurvey);
+  app.delete('/api/surveys', courses.deleteById);
+  app.post('/api/surveys', courses.search);
   //app.get('/api/survey', surveyCtrl.getSurveys);
   //app.get('/api/survey/:id', surveyCtrl.getSurveyById);
 

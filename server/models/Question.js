@@ -7,7 +7,6 @@ var mongoose = require('mongoose');
 // });
 
 var questionSchema = mongoose.Schema({
-    _id: { type: Number },
     question: { type: String, required: '{PATH} is required!' },
     response: []
 });
