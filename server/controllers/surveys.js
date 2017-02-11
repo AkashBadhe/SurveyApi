@@ -41,3 +41,28 @@ exports.createSurvey = function(req, res, next) {
         return res.send('Empty object');
     }
 }
+
+exports.updateSurvey = function(req, res, next){
+	var id = req.params._id || req.body._id;
+	Survey.findByIdAndUpdate(id,{$set:req.body}, function(err, result){
+        if(err){
+            console.log(err);
+        }
+        console.log("RESULT: " + result);
+        res.status(200);
+        res.send(result);
+    });
+}
+
+exports.deleteSurvey = function(req, res, next) {
+    var id = req.params._id || req.body._id;
+    console.log('Deleting book: ' + id);
+    Survey.remove({ _id: id }, function(err) {
+    if (err) {
+        console.log(err);
+    }
+    else {
+        res.status(200);
+    }
+});
+}

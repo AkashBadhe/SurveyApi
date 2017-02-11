@@ -6,7 +6,7 @@ var surveySchema = mongoose.Schema({
     type: { type: String, require: '{PATH} is required!' },
     published: { type: Date, required: '{PATH} is required!' },
     tags: [String],
-    questions: [{ type: Number, ref: 'Question' }]
+    questions: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Question' }]
 });
 var Survey = mongoose.model('Survey', surveySchema);
 
