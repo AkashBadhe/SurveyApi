@@ -8,6 +8,6 @@ var mongoose = require('mongoose');
 
 var questionSchema = mongoose.Schema({
     question: { type: String, required: '{PATH} is required!' },
-    response: []
+    response: {}
 });
 var Question = mongoose.model('Question', questionSchema);
