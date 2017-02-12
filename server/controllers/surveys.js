@@ -2,7 +2,7 @@ var Survey = require('mongoose').model('Survey');
 var Question = require('mongoose').model('Question');
 var _ = require('lodash');
 exports.getSurveys = function(req, res) {
-    Survey.find({}).populate('questions').exec(function(err, collection) {
+    Survey.find({}).exec(function(err, collection) {
         console.log(collection);
         res.status(200);
         res.send(collection);
@@ -10,7 +10,7 @@ exports.getSurveys = function(req, res) {
 };
 
 exports.getSurveyById = function(req, res) {
-    Survey.findOne({ _id: req.params.id }).exec(function(err, course) {
+    Survey.findOne({ _id: req.params.id }).populate('questions').exec(function(err, course) {
         res.status(200);
         res.send(course);
     })
