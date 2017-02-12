@@ -1,9 +1,9 @@
 var express = require('express');
-
+var cors = require('cors')
 var env = process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
 var app = express();
-
+app.use(cors());
 var config = require('./server/config/config')[env];
 
 require('./server/config/express')(app, config);
